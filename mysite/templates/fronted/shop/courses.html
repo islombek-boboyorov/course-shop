@@ -1,0 +1,36 @@
+{% extends 'fronted/base.html' %}
+{% load static %}
+{% block content %}
+<main class="main">
+            <section class="courses" id="courses">
+                <div class="courses__info">
+                    <h1 class="courses__title">ALL COURSES</h1>
+                </div>
+                <div class="courses__container">
+                    {% for course in courses %}
+                    <div class="courses__item">
+                        <div class="courses__item__photo">
+                            <img src="/media/{{course.image}}" alt="Photo">
+                        </div>
+                        <div class="courses__item__title">
+                            <h1>{{course.title}}</h1>
+                        </div>
+                       <div class="courses__item__description">
+                           <p>{{course.description}}</p>
+                       </div>
+                       <div class="ourses__item__button">
+                           <a href="#">learn more</a>
+                       </div>
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="courses__next">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">NEXT PAGE</a>
+                </div>
+            </section>
+        </main>
+{% endblock %}
+
+

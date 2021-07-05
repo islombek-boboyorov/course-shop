@@ -1,0 +1,30 @@
+{% extends 'fronted/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="our__team">
+                <h1 class="our__team-title">OUR TEAM</h1>
+                {% for about in abouts %}
+                <div class="team">
+                    <div class="team__right">
+                        <img class="team__img" src="/media/{{about.image}}" alt="img">
+                    </div>
+                    <div class="team__left">
+                        <h2 class="team__title">{{about.name}}</h2>
+
+                        <h3 class="team__title2">
+                            {{about.degree}}
+                        </h3>
+
+                        <div class="line"></div>
+
+                        <p class="team__text">{{about.description}}</p>
+                    </div>
+                </div>
+              {% endfor %}
+                <img class="guvohnoma" src="{% static 'fronted/img/Guvohnoma.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+{% endblock %}

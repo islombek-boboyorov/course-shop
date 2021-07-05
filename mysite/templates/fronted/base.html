@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Box Icon -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'team/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fronted/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'fronted/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'fronted/css/advantages.css' %}">
+    <link rel="stylesheet" href="{% static 'fronted/css/courses.css' %}">
+    <link rel="stylesheet" href="{% static 'fronted/css/team.css' %}">
+    <link rel="stylesheet" href="{% static 'fronted/css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'fronted/css/footer.css' %}">
+
+    <link rel="stylesheet" href="{% static 'unlock/styles/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'unlock/fonts/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'unlock/styles/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'unlock/styles/style.css' %}">
+    <link rel="stylesheet" href="{% static 'unlock/styles/media.css' %}">
+</head>
+<body>
+    {% include 'fronted/navbar.html' %}
+    {% block content %}{% endblock %}
+    {% include 'fronted/footer.html' %}
+    <script src="{% static 'fronted/js/main.js' %}"></script>
+    <script src="{% static 'unlock/scripts/bootstrap.min.js' %}"></script>
+    <script src="{% static 'unlock/scripts/script.js' %}"></script>
+</body>
+</html>

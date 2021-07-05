@@ -1,0 +1,27 @@
+{% load static %}
+<footer class="footer">
+      <div class="footer__container">
+           <div class="footer__logo">
+               <img src="{% static 'fronted/images/logo-white.png' %} " alt="Logo">
+           </div>
+            <ul class="footer__list">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'news' %}">News</a></li>
+                <li>
+                    <a href="{% url 'course' %}">Corses</a>
+                </li>
+                <li>
+                    <a href="{% url 'team' %}">Team</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+           <div class="footer__icons">
+               <a href="#"><i class='bx bxl-facebook-square'></i></a>
+               <a href="#"><i class='bx bxl-instagram-alt' ></i></a>
+               <a href="#"><i class='bx bxl-telegram'></i></a>
+           </div>
+      </div>
+      <h3>Copyright 2021 BUSINESS INVEST All rights reserved</h3>
+    </footer>

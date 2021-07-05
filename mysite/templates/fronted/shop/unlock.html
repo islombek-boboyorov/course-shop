@@ -1,0 +1,84 @@
+{% extends 'fronted/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for course in courses %}
+    {% for vid  in videos %}
+            {% if vid.number == 1 %}
+            <div class="introduction">    
+                <h2 class="introduction__title">{{vid.title}}</h2>
+                <p class="introduction__text">Sara explains the importance of dedicated thinking time for developing your idea. Learn how to filter your ideas, how to differentiate yourself from your competitors, and when to patent your ideas.</p>
+            </div>
+           <form method="post" enctype="multipart/form-data">
+               {% csrf_token %}
+                <div class="video">
+                    <video width="800" controls>
+                <source src='/media/{{vid.video}}' type="video/mp4">
+               </video>
+                </div>
+           </form>
+             {% endif %}
+                {% endfor  %}
+            <div class="buy">
+                <div class="buys">
+                    <h3 class="buys__title">To unlock all lessons buy now</h3>
+                </div>
+                <div class="plan">
+                    <h3 class="plan__title">LESSON PLAN</h3>
+                    {% for vid in videos %}
+                    {% if user %}
+                    <div class="plan__video">
+                        <div class="line"></div>
+                        <a href="{% url 'video' pks=vid.id pk=course.id %}" class="far fa-play-circle"></a>
+                        <h4 class="plan__video-text">{{vid.number}}. {{vid.title}}</h4>
+                    </div>
+                    {% else %}
+                        {% if vid.number == 1 %}
+                            <div class="plan__video">
+                            <div class="line"></div>
+                            <i class="far fa-play-circle"></i>
+                            <h4 class="plan__video-text">{{vid.number}}. {{vid.title}}</h4>
+                        </div>
+                        {% else %}
+                             <div class="plan__video">
+                                <div class="line"></div>
+                                <i class="fas fa-lock"></i>
+                                <h4 class="plan__video-text">{{vid.number}}. {{vid.title}}</h4>
+                            </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            <div class="video__comment">
+                <h2 class="video__title">Comments</h2>
+                <ul class="comments" id="myUL">
+                    {% for com in comments %}
+                    <li class="comment">
+                        <div class="person">
+                            <img class="person__img" src="{% static 'unlock/IMG/Ellipse 16.png' %}" alt="">
+                            <h4 class="person__title">{{com.name}} - {{com.created_at}}</h4>
+                        </div>
+                        <p class="comment__text">{{com.message}}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% if user %}
+                <form class="publish" id="myDIV" method="post">
+                    {% csrf_token %}
+                    <input name="course" type="hidden" value="{{1}}" id="course">
+                    <input name="video" type="hidden" value="{{1}}" id="video">
+                    <input name="name" type="hidden" value="{{name}}" id="name">
+                    <input id="message" class="publish__text" name="message" type="text" placeholder="Type to add your comment Salimov H.">
+                    <input  type="submit" class="publish__button"  value="Publish">
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
